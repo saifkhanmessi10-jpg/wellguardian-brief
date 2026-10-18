@@ -89,8 +89,8 @@ footer { color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--lin
     <h2 id="plan">What we’ve planned for you</h2>
     <div class="pillars">
       <div class="pillar"><span class="tag">Support</span><strong>Advocacy &amp; consulting</strong><span class="muted">Packages from $250, monthly Navigator plans, organization consulting. Every client starts with a free consultation.</span></div>
-      <div class="pillar"><span class="tag">Learn</span><strong>WellGuardian Academy</strong><span class="muted">CNA/NA hybrid training with live online classes, AHA BLS/CPR, First Aid and Care Support courses.</span></div>
-      <div class="pillar"><span class="tag">Shop</span><strong>Care packages</strong><span class="muted">Your faith-based boxes, build-your-own, gift messages and shipping to a loved one.</span></div>
+      <div class="pillar"><span class="tag">Learn</span><strong>WellGuardian Academy</strong><span class="muted">Your 85-hour Georgia CNA/NA course with live online classes and attendance tracking, non-certification and specialty trainings, AHA BLS/CPR and First Aid.</span></div>
+      <div class="pillar"><span class="tag">Shop</span><strong>WellGuardian store</strong><span class="muted">Your care packages first, with gift messages and shipping to a loved one. Scrubs, gowns, maternity wear and supplements can follow.</span></div>
     </div>
     <ul class="wins">
       <li><strong>One account for your clients and students</strong><span class="muted">Appointments, forms signed online, messages, case updates, classes, certificates and orders in one place.</span></li>
@@ -151,15 +151,15 @@ footer { color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--lin
       { id: "q7", title: "What should your clients be able to do in their own account?", help: "", options: ["See their next appointment", "Sign your forms online", "Message you privately", "See updates on their case", "Upload bills and records", "Pay invoices", "See the hours used on their monthly plan"] }
     ]},
     { title: "3 · Training (WellGuardian Academy)", qs: [
-      { id: "q8", title: "Where is your CNA/NA program with the State of Georgia?", help: "We can only sell CNA packages once the program is approved.", options: ["Approved, and I have the approval number", "Application in progress", "Not started yet", "Not sure what is needed"] },
-      { id: "q9", title: "For BLS/CPR and First Aid, which describes you?", help: "American Heart Association cards come through an AHA training center.", options: ["I am an AHA instructor with a training center", "I will partner with an AHA training center", "I am working on it", "Not sure"] },
-      { id: "q10", title: "How do you want to teach the online part of your classes?", help: "", options: ["Live classes at set times", "Recorded lessons students watch any time", "A mix of both", "Weekday evenings suit my students", "Weekends suit my students"] },
-      { id: "q11", title: "Class size, start dates and the skills lab", help: "Add your first start dates and the lab address in the box if you have them.", options: ["Up to 8 students", "Up to 12 students", "Up to 20 students", "I have a skills lab location", "I need help finding a location"] },
+      { id: "q8", title: "Where are your approvals for CNA/NA and CPR training?", help: "Thank you for the 85-hour Georgia curriculum. We can sell the certification courses once the program is approved.", options: ["CNA/NA program approved, and I have the number", "CNA/NA application in progress", "CNA/NA application not started yet", "I am an AHA instructor with a training center", "I will partner with an AHA training center", "Not sure what is needed"] },
+      { id: "q9", title: "Which specialty trainings should the site offer, and when?", help: "You mentioned both certification and non-certification training for nurse aides. Tell us in the box which are ready now and which come later.", options: ["Dementia and Alzheimer’s care", "Post-stroke care", "Home ventilator care", "Tracheostomy care", "PEG tube care", "Wound care (later)", "Non-certification nurse aide training"] },
+      { id: "q10", title: "How do you want to teach the classroom part of the CNA course?", help: "Your curriculum needs 100% attendance, so live classes can take attendance automatically and missed hours can be booked as make-ups.", options: ["Live online classes at set times", "In person only", "A mix of online and in person", "Recorded lessons for review after class", "Weekday evenings suit my students", "Weekends suit my students"] },
+      { id: "q11", title: "Skills lab, clinicals and class size", help: "Your plan has 24 clinical hours in a Medicare/Medicaid facility with one instructor per 10 students. Add start dates and addresses in the box if you have them.", options: ["I have a skills lab location", "I have a partner facility for clinicals", "Still looking for a clinical partner", "Up to 10 students per class", "Up to 20 students, with two instructors"] },
       { id: "q12", title: "How should students pay for CNA training?", help: "", options: ["Pay in full", "2 or 3 payments", "A deposit to hold their seat", "An employer or sponsor pays"] }
     ]},
-    { title: "4 · Care packages", qs: [
-      { id: "q13", title: "Which boxes should launch first?", help: "", options: ["Stress & Overwhelm", "Cancer Support", "Chronic Illness & Pain", "Maternity and new baby", "Build-your-own box", "Wait until everything else is ready"] },
-      { id: "q14", title: "Faith edition only, or also a version without scripture?", help: "Some buyers may want the same box without Bible verses.", options: ["Faith edition only", "Both versions", "Not sure yet"] },
+    { title: "4 · Your store", qs: [
+      { id: "q13", title: "What should the store sell at launch, and what comes later?", help: "We’ll open the store with your care packages, priced from your shop document. Tell us in the box which other products are ready and when.", options: ["Care packages (launch now)", "WellGuardian scrubs", "Hospital gowns", "Maternity and postnatal wear", "Supplements (joint, gut, immune, heart health)", "Build-your-own care box"] },
+      { id: "q14", title: "Which care boxes come first, and in which style?", help: "Some buyers may want the same box without Bible verses.", options: ["Stress & Overwhelm", "Cancer Support", "Chronic Illness & Pain", "Maternity and new baby", "Faith edition only", "Also a version without scripture"] },
       { id: "q15", title: "Packing, shipping and where you deliver", help: "", options: ["I will pack and ship myself", "A supplier packs and ships", "Not decided", "Georgia only", "Anywhere in the USA", "Local pickup too"] }
     ]},
     { title: "5 · Your dashboard", qs: [
@@ -200,6 +200,7 @@ footer { color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--lin
     if (q.help) { const h = document.createElement("span"); h.className = "q-help"; h.textContent = q.help; head.append(h); }
     const fs = document.createElement("fieldset"); fs.className = "opts"; fs.setAttribute("aria-labelledby", "t-" + q.id);
     const a0 = bag()[q.id] || { picked: [], note: "" };
+    if (q.options && q.options.length) a0.picked = a0.picked.filter((p) => q.options.includes(p));
     (q.options || []).forEach((opt, i) => {
       const lab = document.createElement("label"); lab.className = "opt";
       const box = document.createElement("input"); box.type = "checkbox"; box.value = opt; box.id = q.id + "-o" + i; box.checked = a0.picked.includes(opt);
