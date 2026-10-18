@@ -1,46 +1,13 @@
 {
-  "round": 2,
-  "summary": "Thank you, Sabine. Your answers give us a clear picture, and most of the plan is now locked. Just three quick questions remain, about how a few parts of the site should work.",
+  "round": 3,
+  "summary": "Thank you, Sabine, your scope is now locked. Saif will send you the price quote and timeline next, and he’ll be in touch about the remaining details once the build starts.",
   "understood": [
     "Priorities: advocacy clients first, then training, then consulting and training for organizations, then care packages.",
     "Families start with a free consultation, simple packages can be bought directly, and organizations get a proposal.",
     "Client accounts include appointments, signing forms online, private messages, case updates, uploading bills and records, paying invoices, and hours used on monthly plans.",
-    "CNA course: weekly live online class, online modules with weekly quizzes, a final exam, in-person skills lab and clinical hours, with a deposit to hold a seat.",
-    "Store at launch: four care boxes, each also offered without scripture, plus build-your-own. You pack and ship anywhere in the USA.",
-    "Your dashboard shows everything daily and handles reminders, forms, scheduling, common questions, student hours and skills, receipts, certificates and payment follow-ups, with reports for your accountant."
+    "CNA course opens for registration with a deposit right away, with a weekly live online class, online modules and quizzes, a final exam, in-person skills lab and clinical hours.",
+    "Specialty trainings are a mix of online lessons and in-person sessions.",
+    "Store at launch: four care boxes (each also without scripture) and build-your-own, one flat shipping fee per order, and supplements shown as “coming soon”."
   ],
-  "followups": [
-    {
-      "id": "f1",
-      "question": "While your CNA approval is in progress, what should students be able to do on the site?",
-      "why": "This decides whether the CNA page opens with a sign-up list or with payment.",
-      "options": [
-        "Join an interest list (no payment yet)",
-        "Register and pay the deposit right away",
-        "Hide the CNA course until it’s approved"
-      ]
-    },
-    {
-      "id": "f2",
-      "question": "How should the specialty trainings (dementia and Alzheimer’s, post-stroke, home ventilator, tracheostomy, PEG tube) be taken?",
-      "why": "This decides whether they live in the online Academy, on the class schedule, or both.",
-      "options": [
-        "Online, at the student’s own pace",
-        "Live online class",
-        "In person, hands-on",
-        "A mix of online and in person"
-      ]
-    },
-    {
-      "id": "f3",
-      "question": "For the store, how should supplements and shipping work at launch?",
-      "why": "This decides what the store shows on day one and how checkout adds shipping.",
-      "options": [
-        "Supplements show “coming soon” for now",
-        "Supplements are ready to sell at launch",
-        "One flat shipping fee per order",
-        "Free shipping over a set amount"
-      ]
-    }
-  ]
+  "followups": []
 }
