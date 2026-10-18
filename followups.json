@@ -1,73 +1,46 @@
 {
-  "round": 1,
-  "summary": "Thank you, Sabine. This is a clear picture: you want WellGuardian known first for advocacy, then training, then support for clinics and facilities, with gifts and wellness alongside. Most of the plan is now locked. These last few questions are about the details we can’t guess, mainly how CNA sign-ups work while your approval is in progress, and what’s ready for the store.",
+  "round": 2,
+  "summary": "Thank you, Sabine. Your answers give us a clear picture, and most of the plan is now locked. Just three quick questions remain, about how a few parts of the site should work.",
   "understood": [
     "Priorities: advocacy clients first, then training, then consulting and training for organizations, then care packages.",
-    "Your prices stay as they are. Families start with a free 45-minute consultation (weekdays, evenings and weekends), simple packages can be bought directly, and organizations get a proposal.",
+    "Families start with a free consultation, simple packages can be bought directly, and organizations get a proposal.",
     "Client accounts include appointments, signing forms online, private messages, case updates, uploading bills and records, paying invoices, and hours used on monthly plans.",
-    "CNA course: one 2-hour live online class a week, online modules with a quiz each week, a final exam, in-person skills lab, and 24 clinical hours at a nursing home. Up to 20 students with two instructors. A non-refundable deposit holds the seat and counts toward tuition, and the balance is due before the first skills lab.",
-    "Store at launch: Stress & Overwhelm, Cancer Support, Chronic Illness & Pain and Maternity boxes, each also offered without scripture, plus build-your-own. You pack and ship anywhere in the USA.",
-    "Your dashboard shows everything daily, and the platform takes over reminders, forms, scheduling, common questions, student hours and skills, receipts, certificates and payment follow-ups. It’s just you for now, with reports for your accountant. We keep your logo, colors, wording, blog and testimonials."
+    "CNA course: weekly live online class, online modules with weekly quizzes, a final exam, in-person skills lab and clinical hours, with a deposit to hold a seat.",
+    "Store at launch: four care boxes, each also offered without scripture, plus build-your-own. You pack and ship anywhere in the USA.",
+    "Your dashboard shows everything daily and handles reminders, forms, scheduling, common questions, student hours and skills, receipts, certificates and payment follow-ups, with reports for your accountant."
   ],
   "followups": [
     {
       "id": "f1",
-      "question": "Until the State approves your CNA program, how should CNA sign-ups work on the site?",
-      "why": "Taking non-refundable deposits before approval could leave you owing refunds if your start date has to move. Many schools collect an interest list first.",
+      "question": "While your CNA approval is in progress, what should students be able to do on the site?",
+      "why": "This decides whether the CNA page opens with a sign-up list or with payment.",
       "options": [
-        "Interest list only, no payment until approval",
-        "Take deposits now, refundable if the course doesn’t start",
-        "Take non-refundable deposits now",
-        "Not sure, recommend what’s safest"
+        "Join an interest list (no payment yet)",
+        "Register and pay the deposit right away",
+        "Hide the CNA course until it’s approved"
       ]
     },
     {
       "id": "f2",
-      "question": "How much is the deposit to hold a CNA seat?",
-      "why": "We’ll show it on the enrollment page and take it at sign-up.",
-      "options": ["$100", "$150", "$200", "$250", "Another amount (tell us in the box)"]
+      "question": "How should the specialty trainings (dementia and Alzheimer’s, post-stroke, home ventilator, tracheostomy, PEG tube) be taken?",
+      "why": "This decides whether they live in the online Academy, on the class schedule, or both.",
+      "options": [
+        "Online, at the student’s own pace",
+        "Live online class",
+        "In person, hands-on",
+        "A mix of online and in person"
+      ]
     },
     {
       "id": "f3",
-      "question": "How should the specialty trainings (dementia and Alzheimer’s, post-stroke, home ventilator, tracheostomy, PEG tube) be priced and run?",
-      "why": "We don’t have prices or lengths for these yet. We’ll describe them as training for caregivers and aides, not as a nursing certification.",
+      "question": "For the store, how should supplements and shipping work at launch?",
+      "why": "This decides what the store shows on day one and how checkout adds shipping.",
       "options": [
-        "Same price as your Advanced Care Support Workshops (from $233)",
-        "Each one has its own price (list them in the box)",
-        "Online only",
-        "Online plus a hands-on session in person",
-        "Included free with some CNA packages"
+        "Supplements show “coming soon” for now",
+        "Supplements are ready to sell at launch",
+        "One flat shipping fee per order",
+        "Free shipping over a set amount"
       ]
-    },
-    {
-      "id": "f4",
-      "question": "For the store at launch: what should each care box cost, and are your supplements ready?",
-      "why": "Your shop list gives item prices but no box price, and supplement pages need careful wording with no health claims.",
-      "options": [
-        "Box price = total of the items (about $91–$94)",
-        "I’ll set my own price for each box",
-        "Flat shipping fee per order (amount in the box)",
-        "Supplements: show “coming soon” for now",
-        "Supplements: I’ll send the product list this week"
-      ]
-    },
-    {
-      "id": "f5",
-      "question": "You said we have everything, but a few items are still missing. Which can you send this week?",
-      "why": "Without these, the site shows placeholders, and trust details like a real photo and phone number matter a lot for advocacy clients.",
-      "options": [
-        "A short founder bio (a few sentences about you)",
-        "A photo of you for the About page",
-        "The phone number and email to show on the site",
-        "Your business address (or city only)",
-        "Please use what’s on my current website"
-      ]
-    },
-    {
-      "id": "f6",
-      "question": "When would you like the first CNA class to start, and roughly how many weeks should the course run?",
-      "why": "Students will want a start date and length before they pay a deposit. Your curriculum needs 85 hours in total.",
-      "options": ["Start in November", "Start in December", "Start in January", "About 6 weeks", "About 8 weeks"]
     }
   ]
 }
