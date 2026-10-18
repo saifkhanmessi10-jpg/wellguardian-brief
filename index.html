@@ -273,37 +273,57 @@ footer { color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--lin
       await send("WellGuardian scope brief — " + done + " of 20 answered", { answers: asText(ALL, store.answers, ""), answered: done + " of 20" });
       store.sentAt = new Date().toISOString(); persist();
       box.hidden = false; box.className = "notice";
-      box.textContent = "Thank you! Saif has your answers. He’ll review them and add any follow-up questions to this page, usually within a day. Come back to this same link to see them.";
+      box.textContent = "Thank you! Saif has your answers and is reviewing them now. Keep this page open: a few follow-up questions will appear below in about 10–15 minutes. If you close it, just open the same link again later.";
     } catch {
       box.hidden = false; box.className = "notice warn";
       box.textContent = "We couldn’t send just now. Your answers are still saved on this device. Try again in a minute, or press “Download a copy” and email the file to Saif.";
     } finally { btn.disabled = false; progress(); }
   });
 
-  // Round two: follow-up questions Saif publishes after reviewing the answers.
-  fetch("followups.json?v=" + Date.now(), { cache: "no-store" }).then((r) => r.ok ? r.json() : null).then((data) => {
-    if (!data || !Array.isArray(data.followups) || !data.followups.length) return;
+  // Follow-up rounds: Saif publishes questions to followups.json; the page checks for them while it is open.
+  let shownRound = 0, fqs = [];
+  function showRound(data) {
     const round = Number(data.round) || 1;
+    shownRound = round;
     $("round2").hidden = false;
+    $("r2-title").textContent = round > 1 ? "A few more follow-ups (round " + round + ")" : "What we heard, and a few follow-ups";
     $("r2-summary").textContent = data.summary || "";
+    $("r2-understood").replaceChildren();
     if (Array.isArray(data.understood) && data.understood.length) {
       const l = document.createElement("p"); l.className = "label"; l.textContent = "Locked in";
       const ul = document.createElement("ul"); data.understood.forEach((u) => { const li = document.createElement("li"); li.textContent = String(u); ul.append(li); });
       $("r2-understood").append(l, ul);
     }
-    const fqs = data.followups.map((f, i) => ({ id: "r" + round + "-" + (f.id || "f" + (i + 1)), title: String(f.question || ""), help: String(f.why || ""), options: Array.isArray(f.options) ? f.options.map(String) : [] }));
-    fqs.forEach((q, i) => $("r2-questions").append(card(q, "F" + (i + 1), () => store.follow, persist)));
-    if (store.followSentRound === round) $("r2-note").textContent = "Sent. Saif will confirm the final scope with you.";
-    $("r2-submit").addEventListener("click", async () => {
-      const b = $("r2-submit"); b.disabled = true; b.textContent = "Sending…";
-      try {
-        await send("WellGuardian brief — follow-up answers (round " + round + ")", { followups: asText(fqs, store.follow, "F") });
-        store.followSentRound = round; persist();
-        $("r2-note").textContent = "Thank you. Saif will confirm the final scope with you.";
-      } catch { $("r2-note").textContent = "Couldn’t send just now. Your answers are saved here; please try again shortly."; }
-      finally { b.disabled = false; b.textContent = "Send my clarifications"; }
-    });
-  }).catch(() => {});
+    fqs = data.followups.map((f, i) => ({ id: "r" + round + "-" + (f.id || "f" + (i + 1)), title: String(f.question || ""), help: String(f.why || ""), options: Array.isArray(f.options) ? f.options.map(String) : [] }));
+    $("r2-questions").replaceChildren(...fqs.map((q, i) => card(q, "F" + (i + 1), () => store.follow, persist)));
+    $("r2-submit").hidden = !fqs.length;
+    $("r2-note").textContent = !fqs.length ? "Nothing more to answer. Saif will confirm the final scope with you." : (store.followSentRound === round ? "Sent. Saif will confirm the final scope with you." : "");
+  }
+  $("r2-submit").addEventListener("click", async () => {
+    const b = $("r2-submit"); b.disabled = true; b.textContent = "Sending…";
+    try {
+      await send("WellGuardian brief — follow-up answers (round " + shownRound + ")", { followups: asText(fqs, store.follow, "F") });
+      store.followSentRound = shownRound; persist();
+      $("r2-note").textContent = "Thank you! Saif is reading these now. If anything else comes up, it will appear on this page.";
+    } catch { $("r2-note").textContent = "Couldn’t send just now. Your answers are saved here; please try again shortly."; }
+    finally { b.disabled = false; b.textContent = "Send my clarifications"; }
+  });
+  async function checkFollowups() {
+    try {
+      const r = await fetch("followups.json?v=" + Date.now(), { cache: "no-store" });
+      const data = r.ok ? await r.json() : null;
+      if (!data || !(Number(data.round) > 0) || Number(data.round) === shownRound) return;
+      const first = shownRound === 0;
+      showRound(data);
+      if (!first || store.sentAt) {
+        const box = $("sent"); box.hidden = false; box.className = "notice";
+        box.textContent = "Saif has read your answers. Your follow-up questions are just below.";
+        $("round2").scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    } catch {}
+  }
+  checkFollowups();
+  setInterval(() => { if (!document.hidden && store.sentAt) checkFollowups(); }, 20000);
 })();
 </script>
 </body>
