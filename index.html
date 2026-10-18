@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>WellGuardian Scope Brief</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&display=swap">
+<style>
+:root {
+  --bg: #f4f7f7; --surface: #ffffff; --ink: #12313a; --muted: #56696f; --line: #d9e3e4;
+  --brand: #1f5f6b; --brand-soft: #e3eff0; --on-brand: #ffffff; --sage: #5e7f5a;
+  --built: #2c7a54; --built-soft: #e2f2e9; --cook: #9a6512; --cook-soft: #f8eedb; --ask: #a63d33;
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e191c; --surface: #152428; --ink: #e5eef0; --muted: #9db0b5; --line: #253a40;
+    --brand: #79bcc7; --brand-soft: #1b3439; --on-brand: #0e191c; --sage: #a3c19c;
+    --built: #6fcf9b; --built-soft: #17352a; --cook: #e5b35c; --cook-soft: #3a2e17; --ask: #ec8a80;
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.6; }
+.wrap { max-width: 56rem; margin: 0 auto; padding: 40px 16px 72px; display: grid; gap: 28px; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.15; margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
+h1 { font-size: clamp(2rem, 5vw, 3rem); }
+h2 { font-size: clamp(1.5rem, 3vw, 1.9rem); }
+h3 { font-size: 1.2rem; }
+p { margin: 0; }
+.label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brand); }
+.muted { color: var(--muted); }
+.lead { font-size: 1.1rem; color: var(--muted); max-width: 62ch; }
+header { display: grid; gap: 14px; }
+.pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 12px; }
+.pillar { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px; display: grid; gap: 4px; align-content: start; }
+.pillar .tag { font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; color: var(--brand); }
+.wins { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.wins li { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; }
+.wins strong { display: block; }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 20px; border-radius: 10px; border: 0; font: inherit; font-weight: 700; cursor: pointer; text-decoration: none; background: var(--brand); color: var(--on-brand); }
+.btn:hover { filter: brightness(1.08); }
+.btn:disabled { opacity: 0.55; cursor: not-allowed; filter: none; }
+.btn.quiet { background: transparent; color: var(--brand); border: 1px solid var(--line); }
+.bar { position: sticky; top: 0; z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); padding: 12px 0; display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; justify-content: space-between; }
+.progress { flex: 1 1 220px; display: grid; gap: 6px; }
+.track { height: 8px; background: var(--line); border-radius: 999px; overflow: hidden; }
+.fill { height: 100%; width: 0; background: var(--built); transition: width 0.3s; }
+.save { font-size: 0.9rem; color: var(--muted); }
+.group { display: grid; gap: 14px; }
+.group > h3 { padding-top: 10px; }
+.q { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px; display: grid; gap: 12px; }
+.q.answered { border-color: var(--built); }
+.q-head { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 12px; }
+.q-num { font-family: var(--font-display); font-weight: 700; color: var(--brand); }
+.q-title { font-weight: 700; font-size: 1.05rem; }
+.q-help { grid-column: 2; color: var(--muted); font-size: 0.93rem; }
+.opts { display: flex; flex-wrap: wrap; gap: 8px; border: 0; margin: 0; padding: 0; }
+.opt { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 8px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); cursor: pointer; font-size: 0.95rem; }
+.opt:has(input:checked) { border-color: var(--brand); background: var(--brand-soft); }
+.opt input { width: 18px; height: 18px; accent-color: var(--brand); margin: 0; }
+textarea, input[type=text] { width: 100%; font: inherit; font-size: 0.97rem; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+textarea { min-height: 84px; resize: vertical; }
+textarea:focus, input[type=text]:focus, .opt:focus-within { outline: 2px solid var(--brand); outline-offset: 2px; }
+.note-label { font-size: 0.88rem; color: var(--muted); }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.notice { border-radius: 12px; padding: 14px 16px; background: var(--built-soft); }
+.notice.warn { background: var(--cook-soft); }
+.review { background: var(--surface); border: 1px solid var(--brand); border-radius: 14px; padding: 22px; display: grid; gap: 14px; }
+.review ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.hp { position: absolute; left: -9999px; }
+footer { color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--line); padding-top: 20px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="label">Prepared for Sabine · WellGuardian Health &amp; Advocacy</p>
+    <h1>Let’s lock the scope for your new WellGuardian platform</h1>
+    <p class="lead">We turned eight months of your emails and documents into one plan. These 20 short questions confirm it in your own words. Tick everything that fits and add a few words where you like. About 15 minutes. Your answers are kept on this device as you go, so you can stop and come back.</p>
+  </header>
+
+  <section aria-labelledby="plan" style="display:grid;gap:14px">
+    <h2 id="plan">What we’ve planned for you</h2>
+    <div class="pillars">
+      <div class="pillar"><span class="tag">Support</span><strong>Advocacy &amp; consulting</strong><span class="muted">Packages from $250, monthly Navigator plans, organization consulting. Every client starts with a free consultation.</span></div>
+      <div class="pillar"><span class="tag">Learn</span><strong>WellGuardian Academy</strong><span class="muted">CNA/NA hybrid training with live online classes, AHA BLS/CPR, First Aid and Care Support courses.</span></div>
+      <div class="pillar"><span class="tag">Shop</span><strong>Care packages</strong><span class="muted">Your faith-based boxes, build-your-own, gift messages and shipping to a loved one.</span></div>
+    </div>
+    <ul class="wins">
+      <li><strong>One account for your clients and students</strong><span class="muted">Appointments, forms signed online, messages, case updates, classes, certificates and orders in one place.</span></li>
+      <li><strong>One dashboard for you</strong><span class="muted">Today’s appointments, new inquiries, payments, classes, students and orders, without WordPress or spreadsheets.</span></li>
+      <li><strong>Fixes from your feedback</strong><span class="muted">One clear “Book a free consultation” button, no broken sign-up, address autofill at checkout, your name spelled one way everywhere.</span></li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="brief-title" style="display:grid;gap:18px">
+    <h2 id="brief-title">Your scope brief</h2>
+    <label class="note-label" for="your-name">Your name</label>
+    <input type="text" id="your-name" autocomplete="name" placeholder="Sabine">
+    <div class="bar">
+      <div class="progress"><span id="progress-text">0 of 20 answered</span><div class="track" aria-hidden="true"><div class="fill" id="fill"></div></div></div>
+      <span class="save" id="save" role="status" aria-live="polite">Not started</span>
+    </div>
+    <form id="brief" novalidate></form>
+    <div class="actions">
+      <button type="button" class="btn" id="submit">Send my answers to Saif</button>
+      <a class="btn quiet" id="download" download="wellguardian-scope-brief.txt" href="#">Download a copy</a>
+      <span class="muted" id="submit-note"></span>
+    </div>
+    <div id="sent" class="notice" hidden></div>
+  </section>
+
+  <section id="round2" aria-labelledby="r2-title" hidden style="display:grid;gap:14px">
+    <div class="review">
+      <h2 id="r2-title">What we heard, and a few follow-ups</h2>
+      <p id="r2-summary"></p>
+      <div id="r2-understood"></div>
+      <div id="r2-questions" style="display:grid;gap:14px"></div>
+      <div class="actions">
+        <button type="button" class="btn" id="r2-submit">Send my clarifications</button>
+        <span class="muted" id="r2-note"></span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Prepared by Saif · American Web Masters. Your answers go only to Saif. Questions? Reply to his email or call him.</p>
+  </footer>
+</div>
+
+<script>
+(() => {
+  const ENDPOINT = "https://formsubmit.co/ajax/saifkhanmessi10@gmail.com";
+  const LOCAL_KEY = "wg-brief-v1";
+  const GROUPS = [
+    { title: "1 · Your vision", qs: [
+      { id: "q1", title: "What should WellGuardian be known for two years from now?", help: "Pick the one or two that feel most true.", options: ["The health advocate families in Georgia trust", "A training academy for caregivers and CNAs", "A caring gift and wellness brand", "A partner for clinics and facilities", "All of these, equally"] },
+      { id: "q2", title: "Over the next 6 months, where should most of your energy go?", help: "If you had to choose, which parts come first?", options: ["Advocacy clients", "CNA, CPR and First Aid training", "Care packages", "Consulting and staff training for organizations"] },
+      { id: "q3", title: "Who are the people you most want to help?", help: "This shapes the words and pictures on the home page.", options: ["Adult children caring for aging parents", "People living with a chronic illness", "Cancer patients and their families", "New and expecting mothers", "People who want to become CNAs", "Working CNAs and aides", "Clinics, facilities and home-care agencies", "Churches and community groups"] }
+    ]},
+    { title: "2 · Advocacy and consulting", qs: [
+      { id: "q4", title: "The new site uses the prices from your updated document. Are they right?", help: "For example Essential Advocate from $250 and Navigator Plus at $749 a month.", options: ["Yes, keep them all", "Mostly, but I want to change a few", "Show “starting at” prices only", "Hide prices and ask people to call"] },
+      { id: "q5", title: "How should a new client get started with you?", help: "", options: ["Always a free consultation call first", "Let people buy simple packages directly", "Free call for families, a proposal for organizations", "Not sure, recommend what works best"] },
+      { id: "q6", title: "Your free consultation: how long is it, and when are you free?", help: "Tell us your usual days and hours in the box.", options: ["15 minutes", "30 minutes", "45 minutes", "Weekday daytime", "Weekday evenings", "Weekends"] },
+      { id: "q7", title: "What should your clients be able to do in their own account?", help: "", options: ["See their next appointment", "Sign your forms online", "Message you privately", "See updates on their case", "Upload bills and records", "Pay invoices", "See the hours used on their monthly plan"] }
+    ]},
+    { title: "3 · Training (WellGuardian Academy)", qs: [
+      { id: "q8", title: "Where is your CNA/NA program with the State of Georgia?", help: "We can only sell CNA packages once the program is approved.", options: ["Approved, and I have the approval number", "Application in progress", "Not started yet", "Not sure what is needed"] },
+      { id: "q9", title: "For BLS/CPR and First Aid, which describes you?", help: "American Heart Association cards come through an AHA training center.", options: ["I am an AHA instructor with a training center", "I will partner with an AHA training center", "I am working on it", "Not sure"] },
+      { id: "q10", title: "How do you want to teach the online part of your classes?", help: "", options: ["Live classes at set times", "Recorded lessons students watch any time", "A mix of both", "Weekday evenings suit my students", "Weekends suit my students"] },
+      { id: "q11", title: "Class size, start dates and the skills lab", help: "Add your first start dates and the lab address in the box if you have them.", options: ["Up to 8 students", "Up to 12 students", "Up to 20 students", "I have a skills lab location", "I need help finding a location"] },
+      { id: "q12", title: "How should students pay for CNA training?", help: "", options: ["Pay in full", "2 or 3 payments", "A deposit to hold their seat", "An employer or sponsor pays"] }
+    ]},
+    { title: "4 · Care packages", qs: [
+      { id: "q13", title: "Which boxes should launch first?", help: "", options: ["Stress & Overwhelm", "Cancer Support", "Chronic Illness & Pain", "Maternity and new baby", "Build-your-own box", "Wait until everything else is ready"] },
+      { id: "q14", title: "Faith edition only, or also a version without scripture?", help: "Some buyers may want the same box without Bible verses.", options: ["Faith edition only", "Both versions", "Not sure yet"] },
+      { id: "q15", title: "Packing, shipping and where you deliver", help: "", options: ["I will pack and ship myself", "A supplier packs and ships", "Not decided", "Georgia only", "Anywhere in the USA", "Local pickup too"] }
+    ]},
+    { title: "5 · Your dashboard", qs: [
+      { id: "q16", title: "When you open your dashboard each morning, what do you want to see first?", help: "Tick everything you would check daily.", options: ["Today’s appointments", "New inquiries and bookings", "Payments received or missed", "Upcoming live classes", "Orders to ship", "Clients with unsigned forms", "Student progress", "This month’s income"] },
+      { id: "q17", title: "What takes your time today that you would love the platform to do for you?", help: "", options: ["Appointment reminders", "Sending and collecting forms", "Following up on payments", "Scheduling classes and calls", "Answering the same questions", "Tracking student hours and skills", "Sending receipts and certificates"] },
+      { id: "q18", title: "Who else will use the dashboard?", help: "", options: ["Just me for now", "An assistant", "Instructors", "Other advocates", "My accountant, for reports only"] }
+    ]},
+    { title: "6 · Keep, change and hand over", qs: [
+      { id: "q19", title: "What do you want to keep from your current website and way of working?", help: "Tell us what you dislike in the box, too.", options: ["Logo and colors", "My wording and service descriptions", "Client testimonials", "Blog articles", "Booking through my Google Calendar", "Google Forms for intake"] },
+      { id: "q20", title: "What can you send us now?", help: "Anything not ticked stays as a placeholder on the site until you send it.", options: ["Founder bio", "Professional photos", "Logo files", "Client testimonials, with permission", "Phone and email to publish", "Business address", "Final wording for policies"] }
+    ]}
+  ];
+  const ALL = GROUPS.flatMap((g) => g.qs);
+  const $ = (id) => document.getElementById(id);
+
+  let store = { name: "", answers: {}, follow: {}, sentAt: null, followSentRound: 0 };
+  try { store = { ...store, ...JSON.parse(localStorage.getItem(LOCAL_KEY) || "{}") }; } catch {}
+  let saveTimer = null;
+  function persist() {
+    $("save").textContent = "Saving…";
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(() => {
+      try { localStorage.setItem(LOCAL_KEY, JSON.stringify(store)); $("save").textContent = "Saved on this device"; }
+      catch { $("save").textContent = "Couldn’t save on this device. Send your answers before closing."; }
+      refreshDownload();
+    }, 500);
+  }
+
+  const entry = (bag, id) => (bag[id] ||= { picked: [], note: "" });
+  const isAnswered = (a) => !!a && ((a.picked && a.picked.length) || (a.note && a.note.trim()));
+
+  function card(q, num, bag, onChange) {
+    const el = document.createElement("div"); el.className = "q"; el.dataset.qid = q.id;
+    const head = document.createElement("div"); head.className = "q-head";
+    const n = document.createElement("span"); n.className = "q-num"; n.textContent = num;
+    const t = document.createElement("span"); t.className = "q-title"; t.id = "t-" + q.id; t.textContent = q.title;
+    head.append(n, t);
+    if (q.help) { const h = document.createElement("span"); h.className = "q-help"; h.textContent = q.help; head.append(h); }
+    const fs = document.createElement("fieldset"); fs.className = "opts"; fs.setAttribute("aria-labelledby", "t-" + q.id);
+    const a0 = bag()[q.id] || { picked: [], note: "" };
+    (q.options || []).forEach((opt, i) => {
+      const lab = document.createElement("label"); lab.className = "opt";
+      const box = document.createElement("input"); box.type = "checkbox"; box.value = opt; box.id = q.id + "-o" + i; box.checked = a0.picked.includes(opt);
+      box.addEventListener("change", () => {
+        const a = entry(bag(), q.id);
+        a.picked = box.checked ? [...new Set([...a.picked, opt])] : a.picked.filter((p) => p !== opt);
+        el.classList.toggle("answered", !!isAnswered(a)); onChange();
+      });
+      const s = document.createElement("span"); s.textContent = opt;
+      lab.append(box, s); fs.append(lab);
+    });
+    const nl = document.createElement("label"); nl.className = "note-label"; nl.htmlFor = q.id + "-note"; nl.textContent = "Tell us more (optional)";
+    const ta = document.createElement("textarea"); ta.id = q.id + "-note"; ta.rows = 3; ta.value = a0.note || "";
+    ta.addEventListener("input", () => { const a = entry(bag(), q.id); a.note = ta.value; el.classList.toggle("answered", !!isAnswered(a)); onChange(); });
+    el.classList.toggle("answered", !!isAnswered(a0));
+    el.append(head, fs, nl, ta);
+    return el;
+  }
+
+  function progress() {
+    const done = ALL.filter((q) => isAnswered(store.answers[q.id])).length;
+    $("progress-text").textContent = done + " of " + ALL.length + " answered";
+    $("fill").style.width = (done / ALL.length * 100) + "%";
+    $("submit-note").textContent = store.sentAt ? "Last sent " + new Date(store.sentAt).toLocaleString() + ". You can change answers and send again." : (done < ALL.length ? "You can send with some questions left blank." : "");
+    $("submit").textContent = store.sentAt ? "Send my updated answers" : "Send my answers to Saif";
+  }
+  const onChange = () => { progress(); persist(); };
+
+  let num = 0;
+  GROUPS.forEach((g) => {
+    const wrap = document.createElement("div"); wrap.className = "group";
+    const h = document.createElement("h3"); h.textContent = g.title; wrap.append(h);
+    g.qs.forEach((q) => wrap.append(card(q, ++num, () => store.answers, onChange)));
+    $("brief").append(wrap);
+  });
+  $("your-name").value = store.name || "";
+  $("your-name").addEventListener("input", (e) => { store.name = e.target.value; persist(); });
+  progress();
+
+  function asText(qs, bag, prefix) {
+    return qs.map((q, i) => {
+      const a = bag[q.id] || { picked: [], note: "" };
+      return [prefix + (i + 1) + ". " + q.title,
+        "   Ticked: " + (a.picked.length ? a.picked.join("; ") : "(none)"),
+        a.note && a.note.trim() ? "   In her words: " + a.note.trim() : ""].filter(Boolean).join("\n");
+    }).join("\n\n");
+  }
+  function refreshDownload() {
+    const text = "WellGuardian scope brief" + (store.name ? " from " + store.name : "") + "\n\n" + asText(ALL, store.answers, "");
+    const old = $("download").href; if (old.startsWith("blob:")) URL.revokeObjectURL(old);
+    $("download").href = URL.createObjectURL(new Blob([text], { type: "text/plain" }));
+  }
+  refreshDownload();
+
+  async function send(subject, body) {
+    const res = await fetch(ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({ _subject: subject, _template: "box", _captcha: "false", name: store.name || "Sabine", ...body })
+    });
+    const out = await res.json().catch(() => ({}));
+    if (!res.ok || String(out.success) === "false") throw new Error(out.message || "send failed");
+  }
+
+  $("submit").addEventListener("click", async () => {
+    const done = ALL.filter((q) => isAnswered(store.answers[q.id])).length;
+    if (!done) { $("submit-note").textContent = "Answer at least one question first."; return; }
+    const btn = $("submit"); btn.disabled = true; btn.textContent = "Sending…";
+    const box = $("sent");
+    try {
+      await send("WellGuardian scope brief — " + done + " of 20 answered", { answers: asText(ALL, store.answers, ""), answered: done + " of 20" });
+      store.sentAt = new Date().toISOString(); persist();
+      box.hidden = false; box.className = "notice";
+      box.textContent = "Thank you! Saif has your answers. He’ll review them and add any follow-up questions to this page, usually within a day. Come back to this same link to see them.";
+    } catch {
+      box.hidden = false; box.className = "notice warn";
+      box.textContent = "We couldn’t send just now. Your answers are still saved on this device. Try again in a minute, or press “Download a copy” and email the file to Saif.";
+    } finally { btn.disabled = false; progress(); }
+  });
+
+  // Round two: follow-up questions Saif publishes after reviewing the answers.
+  fetch("followups.json?v=" + Date.now(), { cache: "no-store" }).then((r) => r.ok ? r.json() : null).then((data) => {
+    if (!data || !Array.isArray(data.followups) || !data.followups.length) return;
+    const round = Number(data.round) || 1;
+    $("round2").hidden = false;
+    $("r2-summary").textContent = data.summary || "";
+    if (Array.isArray(data.understood) && data.understood.length) {
+      const l = document.createElement("p"); l.className = "label"; l.textContent = "Locked in";
+      const ul = document.createElement("ul"); data.understood.forEach((u) => { const li = document.createElement("li"); li.textContent = String(u); ul.append(li); });
+      $("r2-understood").append(l, ul);
+    }
+    const fqs = data.followups.map((f, i) => ({ id: "r" + round + "-" + (f.id || "f" + (i + 1)), title: String(f.question || ""), help: String(f.why || ""), options: Array.isArray(f.options) ? f.options.map(String) : [] }));
+    fqs.forEach((q, i) => $("r2-questions").append(card(q, "F" + (i + 1), () => store.follow, persist)));
+    if (store.followSentRound === round) $("r2-note").textContent = "Sent. Saif will confirm the final scope with you.";
+    $("r2-submit").addEventListener("click", async () => {
+      const b = $("r2-submit"); b.disabled = true; b.textContent = "Sending…";
+      try {
+        await send("WellGuardian brief — follow-up answers (round " + round + ")", { followups: asText(fqs, store.follow, "F") });
+        store.followSentRound = round; persist();
+        $("r2-note").textContent = "Thank you. Saif will confirm the final scope with you.";
+      } catch { $("r2-note").textContent = "Couldn’t send just now. Your answers are saved here; please try again shortly."; }
+      finally { b.disabled = false; b.textContent = "Send my clarifications"; }
+    });
+  }).catch(() => {});
+})();
+</script>
+</body>
+</html>
