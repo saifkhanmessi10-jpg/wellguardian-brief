@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>WellGuardian Scope Brief</title>
+<title>WellGuardian Scope Desk</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&display=swap">
@@ -74,6 +74,12 @@ textarea:focus, input[type=text]:focus, .opt:focus-within { outline: 2px solid v
 .review { background: var(--surface); border: 1px solid var(--brand); border-radius: 14px; padding: 22px; display: grid; gap: 14px; }
 .review ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
 .hp { position: absolute; left: -9999px; }
+details.past { border: 1px solid var(--line); border-radius: 14px; background: var(--surface); padding: 6px 18px; }
+details.past[open] { padding-bottom: 20px; }
+details.past > summary { cursor: pointer; font-weight: 700; min-height: 44px; display: flex; align-items: center; color: var(--brand); }
+details.past > section { margin-top: 18px; }
+.opt input[type=radio] { width: 18px; height: 18px; accent-color: var(--brand); margin: 0; }
+.wins .when { color: var(--muted); font-size: 0.85rem; }
 footer { color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--line); padding-top: 20px; }
 </style>
 </head>
@@ -81,10 +87,51 @@ footer { color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--lin
 <div class="wrap">
   <header>
     <p class="label">Prepared for Sabine · WellGuardian Health &amp; Advocacy</p>
-    <h1>Let’s lock the scope for your new WellGuardian platform</h1>
-    <p class="lead">We turned eight months of your emails and documents into one plan. These 20 short questions confirm it in your own words. Tick everything that fits and add a few words where you like. About 15 minutes. Your answers are kept on this device as you go, so you can stop and come back.</p>
+    <h1>Your WellGuardian scope desk</h1>
+    <p class="lead">This is your place to talk with Saif’s project desk about what your new platform includes. See what’s locked, answer any questions we have, and ask to add, change or remove something at any time. Our replies appear right here on this page.</p>
   </header>
 
+  <section id="round2" aria-labelledby="r2-title" hidden style="display:grid;gap:14px">
+    <div class="review">
+      <h2 id="r2-title">Your scope</h2>
+      <p id="r2-summary"></p>
+      <div id="r2-understood"></div>
+      <div id="r2-questions" style="display:grid;gap:14px"></div>
+      <div class="actions">
+        <button type="button" class="btn" id="r2-submit">Send my answers</button>
+        <span class="muted" id="r2-note"></span>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="req-title" style="display:grid;gap:14px">
+    <h2 id="req-title">Add, change or ask about something</h2>
+    <p class="muted">Tell us in your own words. We’ll confirm it, ask a quick question if needed, and add it to your project. Questions about price or payment go to Saif directly.</p>
+    <div class="q">
+      <div class="q-head"><span class="q-num">1</span><span class="q-title" id="t-kind">What would you like to do?</span></div>
+      <fieldset class="opts" aria-labelledby="t-kind" id="req-kind"></fieldset>
+      <div class="q-head"><span class="q-num">2</span><span class="q-title" id="t-part">Which part of the platform?</span></div>
+      <fieldset class="opts" aria-labelledby="t-part" id="req-part"></fieldset>
+      <div class="q-head"><span class="q-num">3</span><span class="q-title" id="t-when">When do you need it?</span></div>
+      <fieldset class="opts" aria-labelledby="t-when" id="req-when"></fieldset>
+      <label class="note-label" for="req-text">Tell us about it</label>
+      <textarea id="req-text" rows="4" placeholder="For example: I’d like students to be able to book a make-up class themselves."></textarea>
+    </div>
+    <div class="actions">
+      <button type="button" class="btn" id="req-send">Send to the project desk</button>
+      <span class="muted" id="req-note"></span>
+    </div>
+  </section>
+
+  <section id="replies" aria-labelledby="rep-title" style="display:grid;gap:12px">
+    <h2 id="rep-title">Replies from the project desk</h2>
+    <p class="muted" id="rep-empty">Nothing yet. When you send something, our reply will show up here, usually within 15 minutes during the day.</p>
+    <ul class="wins" id="rep-list"></ul>
+    <div id="my-requests"></div>
+  </section>
+
+  <details class="past">
+  <summary>Your original brief and plan (sent 18 October)</summary>
   <section aria-labelledby="plan" style="display:grid;gap:14px">
     <h2 id="plan">What we’ve planned for you</h2>
     <div class="pillars">
@@ -115,22 +162,10 @@ footer { color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--lin
     </div>
     <div id="sent" class="notice" hidden></div>
   </section>
-
-  <section id="round2" aria-labelledby="r2-title" hidden style="display:grid;gap:14px">
-    <div class="review">
-      <h2 id="r2-title">What we heard, and a few follow-ups</h2>
-      <p id="r2-summary"></p>
-      <div id="r2-understood"></div>
-      <div id="r2-questions" style="display:grid;gap:14px"></div>
-      <div class="actions">
-        <button type="button" class="btn" id="r2-submit">Send my clarifications</button>
-        <span class="muted" id="r2-note"></span>
-      </div>
-    </div>
-  </section>
+  </details>
 
   <footer>
-    <p>Prepared by Saif · American Web Masters. Your answers go only to Saif. Questions? Reply to his email or call him.</p>
+    <p>Saif · American Web Masters. Everything you send here goes only to Saif and his project desk. For anything urgent, call or message Saif.</p>
   </footer>
 </div>
 
@@ -287,7 +322,7 @@ footer { color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--lin
     const round = Number(data.round) || 1;
     shownRound = round;
     $("round2").hidden = false;
-    $("r2-title").textContent = round > 1 ? "A few more follow-ups (round " + round + ")" : "What we heard, and a few follow-ups";
+    $("r2-title").textContent = (data.followups && data.followups.length) ? "A few questions from us" : "Your scope is locked";
     $("r2-summary").textContent = data.summary || "";
     $("r2-understood").replaceChildren();
     if (Array.isArray(data.understood) && data.understood.length) {
@@ -298,8 +333,80 @@ footer { color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--lin
     fqs = data.followups.map((f, i) => ({ id: "r" + round + "-" + (f.id || "f" + (i + 1)), title: String(f.question || ""), help: String(f.why || ""), options: Array.isArray(f.options) ? f.options.map(String) : [] }));
     $("r2-questions").replaceChildren(...fqs.map((q, i) => card(q, "F" + (i + 1), () => store.follow, persist)));
     $("r2-submit").hidden = !fqs.length;
-    $("r2-note").textContent = !fqs.length ? "Nothing more to answer. Saif will confirm the final scope with you." : (store.followSentRound === round ? "Sent. Saif will confirm the final scope with you." : "");
+    $("r2-note").textContent = !fqs.length ? "" : (store.followSentRound === round ? "Sent. Thank you!" : "");
   }
+
+  // Replies from the project desk (published in followups.json as "updates").
+  let shownUpdates = "";
+  function showUpdates(updates) {
+    const list = Array.isArray(updates) ? updates.slice().sort((a, b) => String(b.at).localeCompare(String(a.at))) : [];
+    const key = JSON.stringify(list);
+    if (key === shownUpdates) return false;
+    const isNew = shownUpdates !== "" && list.length > 0;
+    shownUpdates = key;
+    $("rep-empty").hidden = list.length > 0;
+    $("rep-list").replaceChildren(...list.map((u) => {
+      const li = document.createElement("li");
+      const when = document.createElement("span"); when.className = "when";
+      const d = new Date(u.at); when.textContent = isNaN(d) ? "" : d.toLocaleString([], { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
+      const req = document.createElement("strong"); req.textContent = "You asked: " + String(u.request || "");
+      const rep = document.createElement("span"); rep.textContent = String(u.reply || "");
+      li.append(when, req, rep);
+      return li;
+    }));
+    return isNew;
+  }
+
+  // Requests: add, change, remove or ask about something in the scope.
+  const REQ = {
+    kind: ["Add something", "Change something", "Remove something", "Ask a question"],
+    part: ["Website and advocacy", "Academy and training", "Client and student accounts", "Store", "My dashboard", "Something else"],
+    when: ["Needed at launch", "Can come later", "Not sure"]
+  };
+  const picked = { kind: "", part: "", when: "" };
+  Object.keys(REQ).forEach((k) => {
+    $("req-" + k).replaceChildren(...REQ[k].map((label, i) => {
+      const lab = document.createElement("label"); lab.className = "opt";
+      const r = document.createElement("input"); r.type = "radio"; r.name = "req-" + k; r.value = label; r.id = "req-" + k + "-" + i;
+      r.addEventListener("change", () => { picked[k] = label; });
+      const s = document.createElement("span"); s.textContent = label;
+      lab.append(r, s); return lab;
+    }));
+  });
+  store.requests = Array.isArray(store.requests) ? store.requests : [];
+  function showMyRequests() {
+    const box = $("my-requests"); box.replaceChildren();
+    if (!store.requests.length) return;
+    const h = document.createElement("p"); h.className = "label"; h.textContent = "What you’ve sent from this device";
+    const ul = document.createElement("ul"); ul.className = "wins";
+    store.requests.slice().reverse().forEach((r) => {
+      const li = document.createElement("li");
+      const when = document.createElement("span"); when.className = "when"; when.textContent = new Date(r.at).toLocaleString([], { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
+      const t = document.createElement("strong"); t.textContent = [r.kind, r.part].filter(Boolean).join(" · ");
+      const b = document.createElement("span"); b.className = "muted"; b.textContent = r.text;
+      li.append(when, t, b); ul.append(li);
+    });
+    box.append(h, ul);
+  }
+  showMyRequests();
+  $("req-send").addEventListener("click", async () => {
+    const text = $("req-text").value.trim();
+    if (!text) { $("req-note").textContent = "Please tell us a little about it first."; return; }
+    const btn = $("req-send"); btn.disabled = true; btn.textContent = "Sending…";
+    const entry = { at: new Date().toISOString(), kind: picked.kind, part: picked.part, when: picked.when, text };
+    try {
+      await send("WellGuardian scope request — " + (picked.kind || "Note") + (picked.part ? " · " + picked.part : ""), {
+        request: [ "What: " + (picked.kind || "(not chosen)"), "Part: " + (picked.part || "(not chosen)"), "When: " + (picked.when || "(not chosen)"), "", text ].join("\n")
+      });
+      store.requests.push(entry); persist(); showMyRequests();
+      $("req-text").value = "";
+      document.querySelectorAll("#req-kind input, #req-part input, #req-when input").forEach((r) => { r.checked = false; });
+      picked.kind = picked.part = picked.when = "";
+      $("req-note").textContent = "Sent. Our reply will appear below on this page, usually within 15 minutes during the day.";
+    } catch {
+      $("req-note").textContent = "Couldn’t send just now. Please try again in a minute.";
+    } finally { btn.disabled = false; btn.textContent = "Send to the project desk"; }
+  });
   $("r2-submit").addEventListener("click", async () => {
     const b = $("r2-submit"); b.disabled = true; b.textContent = "Sending…";
     try {
@@ -307,24 +414,22 @@ footer { color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--lin
       store.followSentRound = shownRound; persist();
       $("r2-note").textContent = "Thank you! Saif is reading these now. If anything else comes up, it will appear on this page.";
     } catch { $("r2-note").textContent = "Couldn’t send just now. Your answers are saved here; please try again shortly."; }
-    finally { b.disabled = false; b.textContent = "Send my clarifications"; }
+    finally { b.disabled = false; b.textContent = "Send my answers"; }
   });
   async function checkFollowups() {
     try {
       const r = await fetch("followups.json?v=" + Date.now(), { cache: "no-store" });
       const data = r.ok ? await r.json() : null;
-      if (!data || !(Number(data.round) > 0) || Number(data.round) === shownRound) return;
+      if (!data) return;
+      if (showUpdates(data.updates)) $("replies").scrollIntoView({ behavior: "smooth", block: "start" });
+      if (!(Number(data.round) > 0) || Number(data.round) === shownRound) return;
       const first = shownRound === 0;
       showRound(data);
-      if (!first || store.sentAt) {
-        const box = $("sent"); box.hidden = false; box.className = "notice";
-        box.textContent = "Saif has read your answers. Your follow-up questions are just below.";
-        $("round2").scrollIntoView({ behavior: "smooth", block: "start" });
-      }
+      if (!first && data.followups && data.followups.length) $("round2").scrollIntoView({ behavior: "smooth", block: "start" });
     } catch {}
   }
   checkFollowups();
-  setInterval(() => { if (!document.hidden && store.sentAt) checkFollowups(); }, 20000);
+  setInterval(() => { if (!document.hidden) checkFollowups(); }, 30000);
 })();
 </script>
 </body>
